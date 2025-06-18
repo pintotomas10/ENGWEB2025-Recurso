@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  .w3-container
+    h3 Lista dos cocktails
+    table.w3-table-all.w3-hoverable
+      thead
+        tr
+          th ID
+          th Nome
+          th Categoria
+          th Criador
+      tbody
+        each ck in cocktails || []
+          tr
+            td
+              a(href='/cocktails/' + ck._id)= ck._id
+            td= ck.nome
+            td= ck.categoria
+            td
+              if ck.criador && ck.criador.id
+               a(href='/criadores/' + encodeURIComponent(ck.criador.nome))= ck.criador.nome
+              else
+                | Desconhecido

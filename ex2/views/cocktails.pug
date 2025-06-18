@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  .w3-container
+    h2= cocktail.nome
+    if cocktail.foto
+      img(src=cocktail.foto, alt=cocktail.nome, style="max-width: 300px;")
+
+    ul
+      li ID: #{cocktail._id}
+      li
+        | Criador: 
+        if cocktail.criador
+          a(href='/criadores/' + encodeURIComponent(cocktail.criador.nome))= cocktail.criador.nome
+        else
+          | Desconhecido
+      li Categoria: #{cocktail.categoria}
+      li Servido em: #{cocktail.servidoEm}
+      li Preparação: #{cocktail.preparacao}
+
+    h3 Ingredientes
+    ul
+      each ing in cocktail.ingredientes
+        li= ing
+
+    a(href='/') Voltar à página principal

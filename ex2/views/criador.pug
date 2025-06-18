@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  .w3-container
+    h2= criador.nome
+
+    table.w3-table-all.w3-hoverable
+      thead
+        tr
+          th ID
+          th Nome
+          th Categoria
+          th Ingredientes
+      tbody
+        each ck in criador.cocktails
+          tr
+            td
+              a(href='/cocktails/' + ck._id)= ck._id
+            td= ck.nome
+            td= ck.categoria
+            td= ck.ingredientes.join(', ')
+
+    a(href='/') Voltar à página principal
